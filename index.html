@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSGR車両アップグレード見積もり</title>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Zen Maru Gothic', 'Noto Sans JP', 'Hiragino Maru Gothic ProN', sans-serif;
+      background-color: #1e1e1e;
+      color: #f2f2f2;
+      padding: 100px 15px 20px;
+      margin: 0;
+    }
+    h2, p {
+      color: #f2f2f2;
+    }
+    .total-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .clear-button {
+      padding: 6px 12px;
+      font-size: 0.9em;
+      background-color: #555;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .clear-button:hover {
+      background-color: #777;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .option-button {
+      flex: 1 1 auto;
+      min-width: 120px;
+      padding: 10px 12px;
+      border: 1px solid #555;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #2c2c2c;
+      color: #f0f0f0;
+      text-align: center;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .option-button:hover {
+      background-color: #3a3a3a;
+    }
+    .option-button.active {
+      background-color: #4a90e2;
+      color: white;
+      border-color: #4a90e2;
+    }
+  </style>
+</head>
+
+  <div class="total-fixed">
+    合計金額：<span id="total">0</span>㌦
+    <button id="saveTxtBtn" class="clear-button">.txtで保存</button>
+    <button id="savePdfBtn" class="clear-button">.pdfで保存</button>
+    <button id="clearBtn" class="clear-button">すべてクリア</button>
+  </div>
+
+  <h2>LSGR車両アップグレード価格表</h2>
+
+  <div class="section" data-category="engine">
+    <p>【エンジン】</p>
+    <div class="options">
+      <div class="option-button" data-price="0">指定なし（0㌦）</div>
+      <div class="option-button" data-price="500000">Lv1（500,000㌦）</div>
+      <div class="option-button" data-price="800000">Lv2（800,000㌦）</div>
+      <div class="option-button" data-price="1000000">Lv3（1,000,000㌦）</div>
+      <div class="option-button" data-price="1200000">Lv4（1,200,000㌦）</div>
+      <div class="option-button" data-price="2000000">Lv5（2,000,000㌦）</div>
+    </div>
+  </div>
+
+  <div class="section" data-category="brake">
+    <p>【ブレーキ】</p>
+    <div class="options">
+      <div class="option-button" data-price="0">指定なし（0㌦）</div>
+      <div class="option-button" data-price="500000">Lv1（500,000㌦）</div>
+      <div class="option-button" data-price="800000">Lv2（800,000㌦）</div>
+      <div class="option-button" data-price="1000000">Lv3（1,000,000㌦）</div>
+      <div class="option-button" data-price="1200000">Lv4（1,200,000㌦）</div>
+      <div class="option-button" data-price="2000000">Lv5（2,000,000㌦）</div>
+    </div>
+  </div>
+
+  <div class="section" data-category="mission">
+    <p>【ミッション】</p>
+    <div class="options">
+      <div class="option-button" data-price="0">指定なし（0㌦）</div>
+      <div class="option-button" data-price="500000">Lv1（500,000㌦）</div>
+      <div class="option-button" data-price="800000">Lv2（800,000㌦）</div>
+      <div class="option-button" data-price="1000000">Lv3（1,000,000㌦）</div>
+      <div class="option-button" data-price="1200000">Lv4（1,200,000㌦）</div>
+      <div class="option-button" data-price="2000000">Lv5（2,000,000㌦）</div>
+    </div>
+  </div>
+
+  <div class="section" data-category="suspension">
+    <p>【サスペンション】</p>
+    <div class="options">
+      <div class="option-button" data-price="0">指定なし（0㌦）</div>
+      <div class="option-button" data-price="500000">Lv1（500,000㌦）</div>
+      <div class="option-button" data-price="800000">Lv2（800,000㌦）</div>
+      <div class="option-button" data-price="1000000">Lv3（1,000,000㌦）</div>
+      <div class="option-button" data-price="1200000">Lv4（1,200,000㌦）</div>
+      <div class="option-button" data-price="2000000">Lv5（2,000,000㌦）</div>
+    </div>
+  </div>
+
+  <div class="section" data-category="tank">
+    <p>【燃料タンク】</p>
+    <div class="options">
+      <div class="option-button" data-price="0">指定なし（0㌦）</div>
+      <div class="option-button" data-price="1000000">Lv1（1,000,000㌦）</div>
+      <div class="option-button" data-price="1500000">Lv2（1,500,000㌦）</div>
+      <div class="option-button" data-price="3000000">Lv3（3,000,000㌦）</div>
+    </div>
+  </div>
+
+  <div class="section multi-select" data-category="options">
+    <p>【オプション項目】（複数選択可）</p>
+    <div class="options">
+      <div class="option-button" data-price="5000000">ニトロ（5,000,000㌦）</div>
+      <div class="option-button" data-price="2500000">ニトロ（補充）（2,500,000㌦）</div>
+      <div class="option-button" data-price="3000000">ターボ（3,000,000㌦）</div>
+      <div class="option-button" data-price="3000000">アーマー（3,000,000㌦）</div>
+      <div class="option-button" data-price="5000000">ハーネス（5,000,000㌦）</div>
+    </div>
+  </div>
+
+  <script>
+    const totalDisplay = document.getElementById('total');
+    const selectedSingle = {};
+    const selectedMultiple = new Set();
+
+    document.querySelectorAll('.section').forEach(section => {
+      const category = section.dataset.category;
+      const isMulti = section.classList.contains('multi-select');
+
+      section.querySelectorAll('.option-button').forEach(button => {
+        button.addEventListener('click', () => {
+          const price = parseInt(button.dataset.price, 10) || 0;
+
+          if (isMulti) {
+            if (button.classList.contains('active')) {
+              button.classList.remove('active');
+              selectedMultiple.delete(button);
+            } else {
+              button.classList.add('active');
+              selectedMultiple.add(button);
+            }
+          } else {
+            section.querySelectorAll('.option-button').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            selectedSingle[category] = price;
+          }
+
+          updateTotal();
+        });
+      });
+    });
+
+    function updateTotal() {
+      let total = 0;
+      Object.values(selectedSingle).forEach(val => total += val);
+      selectedMultiple.forEach(btn => {
+        total += parseInt(btn.dataset.price, 10) || 0;
+      });
+      totalDisplay.textContent = total.toLocaleString();
+    }
+
+    // すべてクリア
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      Object.keys(selectedSingle).forEach(key => delete selectedSingle[key]);
+      selectedMultiple.clear();
+      document.querySelectorAll('.option-button.active').forEach(btn => btn.classList.remove('active'));
+      updateTotal();
+    });
+
+    // 選択内容をまとめたテキストを取得
+    function getSelectedSummary() {
+      let summary = '【LSGR車両アップグレード見積り内容】\n';
+
+      document.querySelectorAll('.section:not(.multi-select)').forEach(section => {
+        const label = section.querySelector('p').textContent.trim();
+        const selected = section.querySelector('.option-button.active');
+        const value = selected ? selected.textContent.trim() : '未選択';
+        summary += `${label} ${value}\n`;
+      });
+
+      const multiSection = document.querySelector('.multi-select');
+      const multiLabel = multiSection.querySelector('p').textContent.trim();
+      const selectedOptions = Array.from(multiSection.querySelectorAll('.option-button.active'))
+        .map(btn => btn.textContent.trim());
+
+      summary += `${multiLabel} ${selectedOptions.length ? selectedOptions.join(', ') : 'なし'}\n\n`;
+      summary += `合計金額：${document.getElementById('total').textContent}㌦\n`;
+      return summary;
+    }
+
+    // .txt保存
+    document.getElementById('saveTxtBtn').addEventListener('click', () => {
+      const content = getSelectedSummary();
+      const blob = new Blob([content], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'LSGRメカニック見積もり.txt';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // .pdf保存（印刷ダイアログを使う）
+    document.getElementById('savePdfBtn').addEventListener('click', () => {
+      const content = getSelectedSummary();
+      const win = window.open('', '', 'width=600,height=800');
+      win.document.write(`<pre style="font-family: sans-serif;">${content}</pre>`);
+      win.document.title = 'LSGRメカニック見積もりPDF';
+      win.print();
+    });
+  </script>
+</body>
+</html>
